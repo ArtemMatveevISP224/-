@@ -1,0 +1,28 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Строковый_тип_данных_Средний_уровень
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string str = "Hello World! ";
+
+           
+            int lastSpaceIndex = str.LastIndexOf(' ');
+
+            
+            if (lastSpaceIndex != -1)
+            {
+                str = str.Remove(lastSpaceIndex, 1);
+            }
+
+            Console.WriteLine("Измененная строка: {0}", str);
+
+        }
+    }
+}
