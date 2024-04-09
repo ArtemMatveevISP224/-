@@ -1,0 +1,40 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Символьный_тип_данных_база
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            char[] array = { 'a', ':', 'b', 'c', ':', 'd', ':', 'e', 'f' };
+
+            int count = 0;
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] == ':')
+                {
+                    count++;
+
+                    
+                    for (int j = i; j < array.Length - 1; j++)
+                    {
+                        array[j] = array[j + 1];
+                    }
+
+                    
+                    Array.Resize(ref array, array.Length - 1);
+
+                    
+                    i--;
+                }
+            }
+
+            Console.WriteLine("Количество удаленных символов: {0}", count);
+            Console.WriteLine("Измененный массив: {0}", string.Join(", ", array));
+        }
+    }
+}
