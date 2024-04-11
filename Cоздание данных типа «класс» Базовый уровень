@@ -1,0 +1,47 @@
+using System;
+
+class MyClass
+{
+    
+    private int x;
+    private int y;
+
+   
+    public MyClass(int x, int y)
+    {
+        this.x = x;
+        this.y = y;
+    }
+
+   
+    public string GetInfo()
+    {
+        return $"Объект содержит: x = {x}, y = {y}";
+    }
+
+    
+    public int ProcessFields()
+    {
+       
+        int result = x / y;
+        return result;
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+       
+        MyClass obj = new MyClass(10, 3);
+
+        
+        Console.WriteLine(obj.GetInfo());
+
+       
+        Console.WriteLine($"Целая часть деления x/y: {obj.ProcessFields()}");
+
+        
+        Console.ReadKey();
+    }
+}
