@@ -1,0 +1,78 @@
+using System;
+
+class Employee
+{
+    
+    private string фамилия;
+    private double зарплата;
+    private int Год_приёма_на_работу;
+
+    
+    public Employee()
+    {
+        фамилия = "";
+        зарплата = 0.0;
+        Год_приёма_на_работу = 0;
+    }
+
+    
+    public Employee(string фамилия, double зарплата, int Год_приёма_на_работу)
+    {
+        this.фамилия = фамилия;
+        this.зарплата = зарплата;
+        this.Год_приёма_на_работу = Год_приёма_на_работу;
+    }
+
+    
+    ~Employee()
+    {
+        Console.WriteLine("Object destroyed!");
+    }
+
+    
+    public int CalculateExperience()
+    {
+       
+        int currentYear = DateTime.Now.Year;
+        return currentYear - Год_приёма_на_работу;
+    }
+
+    
+    public int CalculateDaysSinceEmployment()
+    {
+        
+        DateTime currentDate = DateTime.Now;
+        
+        DateTime employmentDate = new DateTime(Год_приёма_на_работу, 1, 1);
+       
+        TimeSpan difference = currentDate - employmentDate;
+        return difference.Days;
+    }
+
+    
+    public string GetInfo()
+    {
+        return $"Работник: {фамилия}, Зарплата: {зарплата}, Год приёма на работу: {Год_приёма_на_работу}";
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+       
+        Employee emp = new Employee("Даниил", 50000, 2010);
+
+        
+        Console.WriteLine(emp.GetInfo());
+
+        
+        Console.WriteLine($"Опыт: {emp.CalculateExperience()} лет");
+
+        
+        Console.WriteLine($"Дней с момента приема на работу: {emp.CalculateDaysSinceEmployment()} дней");
+
+        
+        Console.ReadKey();
+    }
+}
