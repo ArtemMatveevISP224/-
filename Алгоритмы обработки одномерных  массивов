@@ -1,0 +1,88 @@
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+       
+        int[] array = GenerateRandomArray(10);
+
+       
+        Console.WriteLine("Исходный массив:");
+        PrintArray(array);
+
+        
+        int count = CountElementsGreaterThanPrevious(array);
+
+       
+        List<int> resultList = CreateListGreaterThanPrevious(array);
+
+       
+        Console.WriteLine($"Количество элементов, больших предыдущего: {count}");
+        Console.WriteLine("Список элементов, больших предыдущего:");
+        PrintList(resultList);
+
+       
+        Console.ReadKey();
+    }
+
+    
+    static int[] GenerateRandomArray(int length)
+    {
+        Random rnd = new Random();
+        int[] array = new int[length];
+        for (int i = 0; i < length; i++)
+        {
+            array[i] = rnd.Next(100);
+        }
+        return array;
+    }
+
+    static void PrintArray(int[] array)
+    {
+        foreach (var item in array)
+        {
+            Console.Write(item + " ");
+        }
+        Console.WriteLine();
+    }
+
+    
+    static int CountElementsGreaterThanPrevious(int[] array)
+    {
+        int count = 0;
+        for (int i = 1; i < array.Length; i++)
+        {
+            if (array[i] > array[i - 1])
+            {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    
+    static List<int> CreateListGreaterThanPrevious(int[] array)
+    {
+        List<int> resultList = new List<int>();
+        for (int i = 1; i < array.Length; i++)
+        {
+            if (array[i] > array[i - 1])
+            {
+                resultList.Add(array[i]);
+            }
+        }
+        return resultList;
+    }
+
+   
+    static void PrintList(List<int> list)
+    {
+        foreach (var item in list)
+        {
+            Console.Write(item + " ");
+        }
+        Console.WriteLine();
+    }
+}
